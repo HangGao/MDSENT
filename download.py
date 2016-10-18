@@ -6,7 +6,7 @@ Downloads the following:
 """
 
 from __future__ import print_function
-from urllib.request import urlopen
+import urllib2
 import sys
 import os
 import zipfile
@@ -18,7 +18,7 @@ def download(url, dir_path):
     filename = url.split('/')[-1]
     file_path = os.path.join(dir_path, filename)
     try:
-        u = urlopen(url)
+        u = urllib2.urlopen(url)
     except:
         print("URL %s failed to open" % url)
         raise Exception
@@ -28,7 +28,7 @@ def download(url, dir_path):
         print("Cannot write %s" % file_path)
         raise Exception
     try:
-        file_size = int(u.info()['Content-Length'])
+        file_size = int(u.info().getheaders("Content-Length")[0])
     except:
         print("URL %s failed to report length" % url)
         raise Exception
