@@ -20,6 +20,7 @@ parser.add_argument('-c', '--c_filter', action='append', nargs=2,
 parser.add_argument('-n', '--num_class', action='store', type=int, default=6, help='number of classes')
 
 args = parser.parse_args(sys.argv[1:])
+print args
 
 pre_trained_w_embs = None
 pre_trained_c_embs = None
