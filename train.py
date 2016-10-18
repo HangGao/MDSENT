@@ -1,6 +1,6 @@
 import argparse
 import sys
-from io import read_vocab, read_trec, read_embeddings
+from syslib import read_vocab, read_trec, read_embeddings
 import numpy as np
 from mdsent import Model
 
