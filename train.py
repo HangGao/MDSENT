@@ -13,6 +13,8 @@ parser.add_argument('-e', '--epoch', action='store', default=10, type=int, help=
 parser.add_argument('-s', '--save', action='store', help='store trained model to the location')
 parser.add_argument('-v', '--word_vectors', action='store', help='location of pretrained word embeddings')
 parser.add_argument('-V', '--char_vectors', action='store', help='location of pretrained char embeddings')
+parser.add_argument('-p', '--word_vocab', action='store', required=True, help='location of word vocabulary')
+parser.add_argument('-P', '--char_vocab', action='store', required=True, help='location of char vocabulary')
 parser.add_argument('-w', '--w_filter', action='append', nargs=2,
                     help='specify a type of word based filter with its height and number')
 parser.add_argument('-c', '--c_filter', action='append', nargs=2,
@@ -25,7 +27,7 @@ print args
 pre_trained_w_embs = None
 pre_trained_c_embs = None
 
-wvocab, cvocab = read_vocab('data/trec/wvocab-cased.txt', 'data/trec/cvocab-cased.txt')
+wvocab, cvocab = read_vocab(args.word_vocab, args.char_vocab)
 if args.word_vectors is not None:
     pre_trained_w_embs = read_embeddings(wvocab, args.word_vectors)
 else:
@@ -46,8 +48,8 @@ c_nfs = [int(param[1]) for param in args.c_filter]
 
 mlp_layers = (args.num_class,)
 
-train_data = read_trec('data/trec/train', wvocab, cvocab)
-dev_data = read_trec('data/trec/dev', wvocab, cvocab)
+train_data = read_trec(args.train, wvocab, cvocab)
+dev_data = read_trec(args.dev, wvocab, cvocab)
 train_w_x, train_c_x, train_y = train_data['np_wsents'], train_data['np_csents'], train_data['np_labels']
 dev_w_x, dev_c_x, dev_y = dev_data['np_wsents'], dev_data['np_csents'], dev_data['np_labels']
 
