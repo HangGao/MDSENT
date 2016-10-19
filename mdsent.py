@@ -48,6 +48,7 @@ class Model(object):
                  **kwargs
                  ):
         parameters = locals()
+        del parameters['self']
         parameters.update(kwargs)
         self.parameters = parameters
 
