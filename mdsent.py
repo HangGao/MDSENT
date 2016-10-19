@@ -227,7 +227,8 @@ class Model(object):
                 best_dev_acc = dev_acc
                 best_params = self.get_params()
 
-        self.set_params(best_params)
+        if best_params is not None:
+            self.set_params(best_params)
         return best_dev_acc
 
     def test(self,
