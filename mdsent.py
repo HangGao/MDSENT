@@ -146,7 +146,7 @@ class Model(object):
 
     def save(self, file_path):
         print self.parameters
-        print self.get_params()
+        print get_all_param_values(self.network)
         pickle.dump((self.parameters, self.get_params()), open(file_path, 'wb'))
 
     @staticmethod
