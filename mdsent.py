@@ -10,6 +10,8 @@ import time
 import numpy as np
 import sys
 
+sys.setrecursionlimit(50000)
+
 
 def negative_log_likelihood(prediction, target):
     return -T.mean(T.log(prediction)[T.arange(target.shape[0]), target])
