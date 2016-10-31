@@ -50,3 +50,5 @@ where:
   * `model`: the location of trained model
   * `word_vocab`: the location of preprocessed vocabulary for words
   * `char_vocab`: the location of preprocessed vocabulary for characters
+
+PS: the implementation is in Theano, thus it is recommended that floatX is set to float32 in theano flags to avoid possible precision problems.
