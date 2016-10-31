@@ -31,13 +31,13 @@ wvocab, cvocab = read_vocab(args.word_vocab, args.char_vocab)
 if args.word_vectors is not None:
     pre_trained_w_embs = read_embeddings(wvocab, args.word_vectors)
 else:
-    pre_trained_w_embs = np.random.uniform(-0.25, 0.25, (len(wvocab)+1, 300))
+    pre_trained_w_embs = np.asarray(np.random.uniform(-0.25, 0.25, (len(wvocab)+1, 300)), dtype='float32')
     pre_trained_w_embs[0, :] = 0.
 
 if args.char_vectors is not None:
     pre_trained_c_embs = read_embeddings(cvocab, args.char_vectors)
 else:
-    pre_trained_c_embs = np.random.uniform(-0.25, 0.25, (len(cvocab)+1, 300))
+    pre_trained_c_embs = np.asarray(np.random.uniform(-0.25, 0.25, (len(cvocab)+1, 300)), dtype='float32')
     pre_trained_c_embs[0, :] = 0.
 
 w_grams = [int(param[0]) for param in args.w_filter]
