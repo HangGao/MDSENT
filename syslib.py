@@ -26,7 +26,7 @@ def read_embeddings(vocab, emb_path, k=300):
       """
     with codecs.open(emb_path, "rb") as f:
         header = f.readline()
-        embeddings = np.random.uniform(-0.25, 0.25, (len(vocab)+1, k))
+        embeddings = np.asarray(np.random.uniform(-0.25, 0.25, (len(vocab)+1, k)), dtype='float32')
         for line in f:
             es = line.split()
             word = es[0]
