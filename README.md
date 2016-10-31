@@ -10,3 +10,5 @@ Polarity Classification](http://www.aclweb.org/anthology/S/S16/S16-1020.pdf) by 
 * Python 2.7
 
 ## Usage
+First run the following script
+>./fetch_and_preprocess.sh
